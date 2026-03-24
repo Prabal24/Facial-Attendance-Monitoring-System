@@ -2,47 +2,19 @@
 
 ## 📖 Overview
 
-The Facial Attendance Monitoring System is a **real-time face recognition-based attendance system** built using **Python, OpenCV, and MySQL**.
-It automates attendance tracking by detecting and recognizing faces, eliminating manual entry.
-
----
-
-## 🧠 Key Highlights
-
-* Real-time face detection and recognition using OpenCV
-* Automated attendance logging with date and timestamp
-* MySQL database integration for storing attendance records
-* Contactless and efficient attendance system
-* Reduces manual errors and improves accuracy
+The Facial Attendance Monitoring System is a **real-time face recognition-based attendance system** built using **Python, OpenCV, Flask, and MySQL**.
+It automates attendance tracking by detecting and recognizing faces through a webcam.
 
 ---
 
 ## 🚀 Features
 
-### 📷 Face Detection & Recognition
-
-* Detects faces using webcam
-* Recognizes registered users
-
-### 📝 Automatic Attendance
-
-* Marks attendance automatically
-* Stores date and time
-* Prevents duplicate entries
-
-### 🗄️ Database Integration
-
-* Stores attendance records in MySQL
-* Maintains history of users
-
-### 🌐 Dashboard / Management
-
-* View attendance records
-* Manage users
-
-### 🔍 Search Functionality
-
-* Search attendance by name or date
+* 📷 Face Detection & Recognition using OpenCV
+* 📝 Automatic Attendance Marking with Date & Time
+* 🗄️ MySQL Database Integration
+* 🔐 Secure and Contactless System
+* 📊 Dashboard for Attendance Records
+* 🔍 Search Functionality for Attendance
 
 ---
 
@@ -52,33 +24,27 @@ It automates attendance tracking by detecting and recognizing faces, eliminating
 * **Backend:** Python (Flask)
 * **Computer Vision:** OpenCV
 * **Database:** MySQL
-* **Libraries Used:**
-
-  * opencv-python
-  * numpy
-  * flask
-  * pymysql
 
 ---
 
-## 💻 Installation & Setup
+## ⚙️ Installation & Setup
 
 ### 1️⃣ Clone the repository
 
-```bash id="r13mxf"
+```bash
 git clone https://github.com/Prabal24/Facial-Attendance-Monitoring-System.git
 cd Facial-Attendance-Monitoring-System
 ```
 
 ### 2️⃣ Install dependencies
 
-```bash id="t5g0c7"
+```bash
 pip install opencv-python numpy flask pymysql
 ```
 
 ### 3️⃣ Run the project
 
-```bash id="k7d0hz"
+```bash
 python app.py
 ```
 
@@ -97,30 +63,36 @@ python app.py
 
 ## 📸 Screenshots
 
-### 🎥 Face Detection
+### 🎥 Add Student
 
-![Detection](screenshots/detection.png)
+![Add Student](add_student.png)
 
 ---
 
 ### 📊 Dashboard
 
-![dashboard](screenshots/dashboard.png)
+![Dashboard](dashboard.png)
 
 ---
 
-### 📝 Attendance Records
+### 🔐 Login Page
 
-![attendance](screenshots/attendance.png)
+![Login](login.png)
 
 ---
 
-## 📌 Future Enhancements
+### 🧾 Create Session
+
+![Session](create_session.png.png)
+
+---
+
+## 📌 Future Improvements
 
 * Face mask detection
 * Mobile app integration
 * Cloud database support
-* Real-time analytics dashboard
+* Advanced analytics dashboard
 
 ---
 
@@ -134,4 +106,4 @@ python app.py
 
 ## ⭐ Support
 
-If you found this project helpful, please give it a ⭐ on GitHub!
+If you like this project, give it a ⭐ on GitHub!
