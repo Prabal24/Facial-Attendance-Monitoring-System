@@ -24,7 +24,8 @@ HTML, CSS, JavaScript
 
 ![Add Student](add_student.png)
 
-![Student List](student_list.png)
+![Create Session](create_session.png)
+
 
 
 ## ⚙️ Run Project
