@@ -22,7 +22,7 @@ HTML, CSS, JavaScript
 
 ![Dashboard](dashboard.png)
 
-![Add Student](add_student.png)
+![Add Student](add_student.png.png)
 
 ![Create Session](create_session.png)
 
