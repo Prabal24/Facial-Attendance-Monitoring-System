@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #dfe9f3, #ffffff);
+            text-align: center;
+        }
+
+        .header {
+            background: #3c93f0ff;;
+            padding: 25px;
+            color: white;
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 15px 30px;
+            margin: 20px;
+            background: #3c93f0ff;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            background: #23823d;
+            transform: translateY(-3px);
+        }
+
+        .btn-red {
+            background: #d62828;
+        }
+
+        .btn-red:hover {
+            background: #b71c1c;
+        }
+
+        /* Container for buttons */
+        .dashboard-container {
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    Welcome {{ name }} ({{ role }})
+</div>
+
+<div class="dashboard-container">
+
+    <!-- STUDENT DASHBOARD -->
+    {% if role == "student" %}
+        <a href="/student_sessions" class="btn">Class Sessions</a>
+        <a href="/student_attendance" class="btn">Attendance</a>
+        <a href="/student_sessions" class="btn">Mark Attendance</a>
+        <br>
+        <a href="/logout" class="btn btn-red">Logout</a>
+    {% endif %}
+
+    <!-- TEACHER DASHBOARD -->
+    {% if role == "teacher" %}
+        <a href="/add_student" class="btn">Add Student</a>
+        <a href="/view_students" class="btn">View Students</a>
+        <a href="/create_session" class="btn">Create Session</a>
+        <a href="/view_sessions" class="btn">View Sessions</a>
+        <br>
+        <a href="/logout" class="btn btn-red">Logout</a>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

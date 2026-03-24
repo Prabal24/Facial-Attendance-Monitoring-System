@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Attendance</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f7;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Your Attendance (Class: {{ class_name }})</h2>
+
+    <h3>Overall Summary</h3>
+    <table>
+        <tr>
+            <th>Total Sessions (Past)</th>
+            <th>Present</th>
+            <th>Missed</th>
+        </tr>
+        <tr>
+            <td>{{ total_sessions }}</td>
+            <td>{{ present_count }}</td>
+            <td>{{ missed_count }}</td>
+        </tr>
+    </table>
+
+
+    <h3>Subject Wise Summary</h3>
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>Total Sessions</th>
+            <th>Present</th>
+        </tr>
+        {% for row in subject_stats %}
+        <tr>
+            <td>{{ row.subject }}</td>
+            <td>{{ row.subject_total }}</td>
+            <td>{{ row.present_for_subject }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <h3>Your Attendance Records</h3>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>Status</th>
+        </tr>
+        {% for row in attendance %}
+        <tr>
+            <td>{{ row.attendance_date }}</td>
+            <td>{{ row.attendance_time }}</td>
+            <td>{{ row.subject }}</td>
+            <td>{{ row.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/home" class="back-btn">Back</a>
+
+</body>
+</html>

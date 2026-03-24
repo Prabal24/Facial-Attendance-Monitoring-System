@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students List</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        th { background: #f2f2f2; }
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        .btn {
+            padding: 6px 10px;
+            background: #d9534f;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Students List</h2>
+
+<form method="GET" style="display:flex; align-items:center; gap:10px;">
+
+    <label><b>Class:</b></label>
+
+    <select name="class" onchange="this.form.submit()" 
+            style="padding:6px; border-radius:5px;">
+        <option value="">All</option>
+        {% for c in class_options %}
+            <option value="{{ c }}" {% if selected_class == c %}selected{% endif %}>
+                {{ c }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <input type="text" 
+           name="search" 
+           value="{{ search }}" 
+           placeholder="Search by Roll No / Name" 
+           style="padding:6px 10px; width:220px; border-radius:5px; border:1px solid #ccc;">
+
+    <!-- SEARCH BUTTON (Blue) -->
+    <button type="submit"
+        style="padding:7px 15px; background:#0044ff; color:white;  border-radius:6px; cursor:pointer; font-weight:bold;">
+        Search
+    </button>
+
+    <!-- CLEAR BUTTON (Blue) -->
+    <a href="{{ url_for('view_students') }}"
+        style="padding:7px 15px; background:#0044ff; color:white; border-radius:6px; text-decoration:none; cursor:pointer; font-weight:bold;">
+        Clear
+    </a>
+
+    <a href="{{ url_for('home') }}"
+   style="
+        padding:7px 15px;
+        background:#0044ff;
+        color:white;
+        border-radius:6px;
+        text-decoration:none;
+        font-size:14px;
+        display:inline-block;
+        font-weight:bold;
+   ">
+    Back
+</a>
+
+
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Semester</th>
+            <th>Class</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for s in students %}
+        <tr>
+            <td><img src="/static/uploads/{{ s.photo_filename }}"></td>
+            <td>{{ s.roll_no }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.course }}</td>
+            <td>{{ s.semester }}</td>
+            <td>{{ s.class_name }}</td>
+
+            <td>
+                <form action="{{ url_for('delete_student', student_id=s.id) }}" method="POST" onsubmit="return confirm('Delete this student?');">
+                    <button class="btn">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+</body>
+</html>

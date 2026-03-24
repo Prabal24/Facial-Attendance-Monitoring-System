@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Class Sessions</title>
+    <style>
+        .btn {
+            padding: 8px 16px;
+            background: green;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-red {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Your Class Sessions</h2>
+
+<table border="1" cellpadding="10" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Subject</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Status</th>
+        <th>Attendance</th>
+        <th>Action</th>
+    </tr>
+
+    {% for s in sessions %}
+    <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.subject }}</td>
+        <td>{{ s.start_time }}</td>
+        <td>{{ s.end_time }}</td>
+
+        <td>
+            {% if s.end_time > now %}
+                🔵 Active
+            {% else %}
+                🔴 Ended
+            {% endif %}
+        </td>
+
+        <td>
+            {% if s.att_status == "Present" %}
+                ✔ Present
+            {% elif s.att_status == "Missed" %}
+                ❌ Missed
+            {% else %}
+                🟡 Not Marked
+            {% endif %}
+        </td>
+
+        <td>
+            {% if s.att_status != "Present" and s.end_time > now %}
+                <a href="{{ url_for('mark_attendance_route', session_id=s.id) }}" class="btn">
+                    Mark Attendance
+                </a>
+            {% elif s.att_status == "Present" %}
+                <span style="color:green;">Done</span>
+            {% else %}
+                <span style="color:red;">Missed</span>
+            {% endif %}
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/home" class="btn btn-red">Back</a>
+
+</body>
+</html>

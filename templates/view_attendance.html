@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Attendance Records</title>
+
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        a.btn {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 8px 14px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        a.btn:hover {
+            background: #43A047;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        th {
+            background: #f5f6f8;
+        }
+
+        tr:hover {
+            background: #f9fafc;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .present { background: #d4edda; color: #155724; }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h2>Attendance for Session ID: {{ session_id }}</h2>
+
+    <a href="/view_sessions" class="btn">← Back to Sessions</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Subject</th>
+                <th>Marked By</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in attendance %}
+            <tr>
+                <td>{{ row.student_id }}</td>
+                <td>{{ row.roll_no }}</td>
+                <td>{{ row.student_name }}</td>
+                <td>{{ row.attendance_date }}</td>
+                <td>{{ row.attendance_time }}</td>
+                <td><span class="status present">{{ row.status }}</span></td>
+                <td>{{ row.subject }}</td>
+                <td>{{ row.marked_by }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+</body>
+</html>

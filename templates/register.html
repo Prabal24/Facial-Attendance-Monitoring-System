@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Session</title>
+
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            width: 420px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            text-align: center;
+        }
+
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #43A047;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            margin-top: 10px;
+            display: block;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Create Attendance Session</h2>
+
+        <form method="POST">
+
+            <!-- Class Selection -->
+            <select name="class_name" required>
+                <option value="">Select Class</option>
+                <option value="BCA-1">BCA-1</option>
+                <option value="BCA-2">BCA-2</option>
+                <option value="BCA-3">BCA-3</option>
+            </select>
+
+            <!-- Subject -->
+            <input type="text" name="subject" placeholder="Enter Subject" required>
+
+            <!-- Start Time -->
+            <label style="float:left;margin-left:18px;margin-top:5px;">Start Time:</label>
+            <input type="datetime-local" name="start_time" required>
+
+            <!-- End Time -->
+            <label style="float:left;margin-left:18px;margin-top:5px;">End Time:</label>
+            <input type="datetime-local" name="end_time" required>
+
+            <!-- Submit -->
+            <button type="submit">Create Session</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <a href="/home">← Back to Home</a>
+    </div>
+
+</body>
+</html>

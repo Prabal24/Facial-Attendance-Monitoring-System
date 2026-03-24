@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #41a541;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #41a541;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 17px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #2e7f2e;
+        }
+
+        .msg {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #41a541;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add Student</h2>
+
+    <form action="/add_student" method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="roll_no" placeholder="Roll Number" required>
+
+        <input type="text" name="name" placeholder="Student Name" required>
+
+        <label>Select Course</label>
+        <select name="course" required>
+            <option value="">Select Course</option>
+            <option value="BCA">BCA</option>
+            <option value="BBA">BBA</option>
+            <option value="MCA">MCA</option>
+        </select>
+
+        <label>Select Semester</label>
+        <select name="semester" required>
+            <option value="">Select Semester</option>
+            <option value="Sem 1">Sem 1</option>
+            <option value="Sem 2">Sem 2</option>
+            <option value="Sem 3">Sem 3</option>
+            <option value="Sem 4">Sem 4</option>
+            <option value="Sem 5">Sem 5</option>
+            <option value="Sem 6">Sem 6</option>
+        </select>
+
+        <label>Select Class</label>
+        <select name="class_name" required>
+            {% for c in class_options %}
+                <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Upload Photo</label>
+        <input type="file" name="photo" required>
+
+        <button type="submit">Add Student</button>
+    </form>
+
+    {% if msg %}
+        <p class="msg">{{ msg }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <a href="/home">Back</a>
+
+</div>
+
+</body>
+</html>
