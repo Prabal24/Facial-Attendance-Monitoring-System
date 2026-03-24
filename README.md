@@ -105,13 +105,13 @@ python app.py
 
 ### 📊 Dashboard
 
-![Dashboard](screenshots/dashboard.png)
+![dashboard](screenshots/dashboard.png)
 
 ---
 
 ### 📝 Attendance Records
 
-![Attendance](screenshots/attendance.png)
+![attendance](screenshots/attendance.png)
 
 ---
 
